@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Função para adicionar uma linha à planilha do Google Sheets
-async function adicionarLinha(tipoContribuicao, valor, data, nomeContribuinte) {
-    const API_KEY = 'AIzaSyDjxoIVEIy_D4A-ZPtWVcQAN0tlADUqFdw'; // Substitua pela sua chave de API do Google Sheets
+function adicionarLinha(tipoContribuicao, valor, data, nomeContribuinte) {
+    const API_KEY = 'AIzaSyD3xo7xTfTidvYtZ81maokmZbWFoLXEEEw'; // Substitua pela sua chave de API do Google Sheets
     const SPREADSHEET_ID = '15bxULWG5MQjFhLttVDgpVtn4azaY4zf2lzcc2ekm7ug'; // Substitua pelo ID da sua planilha do Google Sheets
 
     // Crie uma matriz de valores a serem adicionados
@@ -54,30 +54,33 @@ async function adicionarLinha(tipoContribuicao, valor, data, nomeContribuinte) {
         [tipoContribuicao, valor, data, nomeContribuinte],
     ];
 
-    // Crie uma autenticação com a chave de API
+    // Configure a chave de API para autenticação
     const auth = new google.auth.GoogleAuth({
-        keyFile: 'path/to/your/credentials.json', // Substitua pelo caminho para suas credenciais JSON
+        key: API_KEY,
         scopes: 'https://www.googleapis.com/auth/spreadsheets',
     });
 
     // Crie uma instância do cliente Google Sheets
     const sheets = google.sheets('v4');
-    const sheetsClient = await auth.getClient();
 
-    try {
-        const response = await sheets.spreadsheets.values.append({
-            spreadsheetId: SPREADSHEET_ID,
-            range: 'A1', // Especifique a faixa onde deseja adicionar os valores
-            valueInputOption: 'RAW',
-            insertDataOption: 'INSERT_ROWS',
-            resource: {
-                values: valores,
-            },
-            auth: sheetsClient,
-        });
+    // Adicione a lógica para adicionar a linha à planilha aqui
+    // ...
 
-        console.log('Linha adicionada à planilha:', response.data);
-    } catch (error) {
-        console.error('Erro ao adicionar linha à planilha:', error);
-    }
+    // Exemplo de como adicionar os valores à planilha
+    sheets.spreadsheets.values.append({
+        spreadsheetId: SPREADSHEET_ID,
+        range: 'A1', // Especifique a faixa onde deseja adicionar os valores
+        valueInputOption: 'RAW',
+        insertDataOption: 'INSERT_ROWS',
+        resource: {
+            values: valores,
+        },
+        auth: auth,
+    }, (err, res) => {
+        if (err) {
+            console.error('Erro ao adicionar linha à planilha:', err);
+        } else {
+            console.log('Linha adicionada à planilha:', res.data);
+        }
+    });
 }
