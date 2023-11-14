@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Função para adicionar uma linha à planilha do Google Sheets
 async function adicionarLinha(tipoContribuicao, valor, data, nomeContribuinte) {
-    const API_KEY = 'AIzaSyDjxoIVEIy_D4A-ZPtWVcQAN0tlADUqFdw'; // Substitua pela sua chave de API
+    const API_KEY = 'AIzaSyDjxoIVEIy_D4A-ZPtWVcQAN0tlADUqFdw'; // Substitua pela sua chave de API do Google Sheets
     const SPREADSHEET_ID = '15bxULWG5MQjFhLttVDgpVtn4azaY4zf2lzcc2ekm7ug'; // Substitua pelo ID da sua planilha do Google Sheets
 
     // Crie uma matriz de valores a serem adicionados
