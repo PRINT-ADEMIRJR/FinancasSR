@@ -4,53 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Dízimo ou Oferta</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            margin: 20px auto;
-            max-width: 400px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="date"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="css/layout.css">    
+    
 </head>
 <body>
     <h1>Cadastro de Dízimo ou Oferta</h1>
@@ -73,44 +28,7 @@
         <button type="button" id="enviar-button">Enviar</button>
     </form>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("cadastro-form");
-            const enviarButton = document.getElementById("enviar-button");
-
-            enviarButton.addEventListener("click", function () {
-                const tipoContribuicao = document.getElementById("tipo-contribuicao").value;
-                const valor = document.getElementById("valor").value;
-                const data = document.getElementById("data").value;
-                const nomeContribuinte = document.getElementById("nome-contribuinte").value;
-
-                const confirmacao = confirm("Por favor, confirme as informações:\n\n" +
-                    `Tipo de Contribuição: ${tipoContribuicao}\n` +
-                    `Valor: R$ ${valor}\n` +
-                    `Data: ${data}\n` +
-                    `Nome do Contribuinte: ${nomeContribuinte}`);
-
-                if (confirmacao) {
-                    const comprovante = `Tipo de Contribuição: ${tipoContribuicao}\n` +
-                        `Valor: R$ ${valor}\n` +
-                        `Data: ${data}\n` +
-                        `Nome do Contribuinte: ${nomeContribuinte}`;
-
-                    const comprovanteParaDownload = encodeURIComponent(comprovante);
-                    const downloadLink = document.createElement('a');
-                    downloadLink.href = `data:text/plain;charset=utf-8,${comprovanteParaDownload}`;
-                    downloadLink.download = 'comprovante.txt';
-                    downloadLink.style.display = 'none';
-                    document.body.appendChild(downloadLink);
-                    downloadLink.click();
-                    document.body.removeChild(downloadLink);
-
-                    const whatsappLink = `https://wa.me/?text=${encodeURIComponent(comprovante)}`;
-                    window.open(whatsappLink, '_blank');
-                }
-            });
-        });
-    </script>
+    <script src="js/logica.js"></script>
 </body>
 </html>
 
