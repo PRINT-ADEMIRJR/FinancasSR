@@ -54,33 +54,22 @@ function adicionarLinha(tipoContribuicao, valor, data, nomeContribuinte) {
         [tipoContribuicao, valor, data, nomeContribuinte],
     ];
 
-    // Configure a chave de API para autenticação
-    const auth = new google.auth.GoogleAuth({
-        key: API_KEY,
-        scopes: 'https://www.googleapis.com/auth/spreadsheets',
-    });
-
-    // Crie uma instância do cliente Google Sheets
-    const sheets = google.sheets('v4');
-
-    // Adicione a lógica para adicionar a linha à planilha aqui
-    // ...
-
-    // Exemplo de como adicionar os valores à planilha
-    sheets.spreadsheets.values.append({
-        spreadsheetId: SPREADSHEET_ID,
-        range: 'A1', // Especifique a faixa onde deseja adicionar os valores
-        valueInputOption: 'RAW',
-        insertDataOption: 'INSERT_ROWS',
-        resource: {
-            values: valores,
+    // Exemplo de como adicionar os valores à planilha usando fetch
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/A1:append?valueInputOption=RAW`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${API_KEY}`,
+            'Content-Type': 'application/json',
         },
-        auth: auth,
-    }, (err, res) => {
-        if (err) {
-            console.error('Erro ao adicionar linha à planilha:', err);
-        } else {
-            console.log('Linha adicionada à planilha:', res.data);
-        }
+        body: JSON.stringify({
+            values: valores,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Linha adicionada à planilha:', data);
+    })
+    .catch(error => {
+        console.error('Erro ao adicionar linha à planilha:', error);
     });
 }
