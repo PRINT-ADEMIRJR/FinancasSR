@@ -3,23 +3,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const enviarButton = document.getElementById("enviar-button");
 
     enviarButton.addEventListener("click", function () {
-        const tipoContribuicao = document.getElementById("tipo-contribuicao").value;
-        const valor = document.getElementById("valor").value;
-        const data = document.getElementById("data").value;
-        const nomeContribuinte = document.getElementById("nome-contribuinte").value;
+        const tipoContribuicao = document.getElementById("TIPO CONTRIBUICAO").value;
+        const valor = document.getElementById("DATA").value;
+        const data = document.getElementById("NOME").value;
+        const nomeContribuinte = document.getElementById("VALOR").value;
 
         const confirmacao = confirm("Por favor, confirme as informações:\n\n" +
-            `Tipo de Contribuição: ${tipoContribuicao}\n` +
-            `Valor: R$ ${valor}\n` +
-            `Data: ${data}\n` +
-            `Nome do Contribuinte: ${nomeContribuinte}`);
+            `TIPO CONTRIBUICAO: ${tipoContribuicao}\n` +
+            `DATA: ${data}\n` +
+            `NOME: R$ ${valor}\n` +
+            `VALOR: ${nomeContribuinte}`);
 
         if (confirmacao) {
             const linhaParaAdicionar = {
-                "Tipo de Contribuição": tipoContribuicao,
-                "Valor": valor,
-                "Data": data,
-                "Nome do Contribuinte": nomeContribuinte
+                "TIPO CONTRIBUICAO": tipoContribuicao,
+                "DATA": valor,
+                "NOME": data,
+                "VALOR": nomeContribuinte
             };
 
             const login = '8ydfizyl';
@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(function (response) {
                 console.log('Linha adicionada com sucesso:', response.data);
                 // Limpe os campos do formulário
-                document.getElementById("tipo-contribuicao").value = "";
-                document.getElementById("valor").value = "";
-                document.getElementById("data").value = "";
-                document.getElementById("nome-contribuinte").value = "";
+                document.getElementById("TIPO COMTRIBUICAO").value = "";
+                document.getElementById("DATA").value = "";
+                document.getElementById("NOME").value = "";
+                document.getElementById("VALOR").value = "";
             })
             .catch(function (error) {
                 console.error('Erro ao adicionar linha à planilha:', error);
