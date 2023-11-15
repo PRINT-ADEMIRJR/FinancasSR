@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const nomeContribuinte = document.getElementById("nome-contribuinte").value;
 
         const confirmacao = confirm("Por favor, confirme as informações:\n\n" +
-            `TIPO CONTRIBUICAO: ${tipoContribuicao}\n` +
-            `DATA: ${data}\n` +
-            `NOME: R$ ${valor}\n` +
-            `VALOR: ${nomeContribuinte}`);
+            `tipo-contribuicao: ${tipoContribuicao}\n` +
+            `valor: ${valor}\n` +
+            `data: R$ ${data}\n` +
+            `nome-contribuinte: ${nomeContribuinte}`);
 
         if (confirmacao) {
             const linhaParaAdicionar = {
@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(function (response) {
                 console.log('Linha adicionada com sucesso:', response.data);
                 // Limpe os campos do formulário
-                document.getElementById("TIPO COMTRIBUICAO").value = "";
-                document.getElementById("DATA").value = "";
-                document.getElementById("NOME").value = "";
-                document.getElementById("VALOR").value = "";
+                document.getElementById("tipo-contribuicao").value = "";
+                document.getElementById("valor").value = "";
+                document.getElementById("data").value = "";
+                document.getElementById("nome-contribuinte").value = "";
             })
             .catch(function (error) {
                 console.error('Erro ao adicionar linha à planilha:', error);
