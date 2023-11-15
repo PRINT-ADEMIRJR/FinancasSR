@@ -9,24 +9,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const nomeContribuinte = document.getElementById("nome-contribuinte").value;
 
         const confirmacao = confirm("Por favor, confirme as informações:\n\n" +
-            `tipo-contribuicao: ${tipoContribuicao}\n` +
-            `valor: ${valor}\n` +
-            `data: R$ ${data}\n` +
-            `nome-contribuinte: ${nomeContribuinte}`);
+            `Tipo de Contribuição: ${tipoContribuicao}\n` +
+            `Valor: R$ ${valor}\n` +
+            `Data: ${data}\n` +
+            `Nome do Contribuinte: ${nomeContribuinte}`);
 
         if (confirmacao) {
             const linhaParaAdicionar = {
-                "TIPO CONTRIBUICAO": tipoContribuicao,
-                "DATA": valor,
-                "NOME": data,
-                "VALOR": nomeContribuinte
+                "Tipo de Contribuição": tipoContribuicao,
+                "Valor": valor,
+                "Data": data,
+                "Nome do Contribuinte": nomeContribuinte
             };
 
             const login = '8ydfizyl';
             const senha = ' j2cokui300dn10o0uioc';
             const token = btoa(`${login}:${senha}`);
 
-            axios.post(' https://sheetdb.io/api/v1/ka6puxydxkw4v ', linhaParaAdicionar, {
+            axios.post('https://sheetdb.io/api/v1/ka6puxydxkw4v', linhaParaAdicionar, {
                 headers: {
                     'Authorization': `Basic ${token}`
                 }
