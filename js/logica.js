@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
             
             const login = '8ydfizyl';
-            const senha = ' j2cokui300dn10o0uioc';
+            const senha = 'j2cokui300dn10o0uioc';
             const token = btoa(`${login}:${senha}`);
 
             axios.post('https://sheetdb.io/api/v1/ka6puxydxkw4v', linhaParaAdicionar, {
