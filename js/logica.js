@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (confirmacao) {
             const linhaParaAdicionar = {
-                "Tipo de Contribuição": tipoContribuicao,
-                "Valor": valor,
-                "Data": data,
-                "Nome do Contribuinte": nomeContribuinte
+                "TIPO CONTRIBUICAO": tipoContribuicao,
+                "DATA": data,
+                "NOME": nomeContribuinte,
+                "VALOR": valor
             };
-
+            
             const login = '8ydfizyl';
             const senha = ' j2cokui300dn10o0uioc';
             const token = btoa(`${login}:${senha}`);
