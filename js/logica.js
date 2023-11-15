@@ -1,20 +1,47 @@
-const login = ' 8ydfizyl';
-const senha = ' j2cokui300dn10o0uioc';
-const token = btoa(`${login}:${senha}`);
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("cadastro-form");
+    const enviarButton = document.getElementById("enviar-button");
 
-axios.post('https://sheetdb.io/api/v1/ka6puxydxkw4v', linhaParaAdicionar, {
-  headers: {
-    'Authorization': `Basic ${token}`
-  }
-})
-.then(function (response) {
-  console.log('Linha adicionada com sucesso:', response.data);
-  // Limpe os campos do formulário
-  document.getElementById("tipo-contribuicao").value = "";
-  document.getElementById("valor").value = "";
-  document.getElementById("data").value = "";
-  document.getElementById("nome-contribuinte").value = "";
-})
-.catch(function (error) {
-  console.error('Erro ao adicionar linha à planilha:', error);
+    enviarButton.addEventListener("click", function () {
+        const tipoContribuicao = document.getElementById("tipo-contribuicao").value;
+        const valor = document.getElementById("valor").value;
+        const data = document.getElementById("data").value;
+        const nomeContribuinte = document.getElementById("nome-contribuinte").value;
+
+        const confirmacao = confirm("Por favor, confirme as informações:\n\n" +
+            `Tipo de Contribuição: ${tipoContribuicao}\n` +
+            `Valor: R$ ${valor}\n` +
+            `Data: ${data}\n` +
+            `Nome do Contribuinte: ${nomeContribuinte}`);
+
+        if (confirmacao) {
+            const linhaParaAdicionar = {
+                "Tipo de Contribuição": tipoContribuicao,
+                "Valor": valor,
+                "Data": data,
+                "Nome do Contribuinte": nomeContribuinte
+            };
+
+            const login = '8ydfizyl';
+            const senha = ' j2cokui300dn10o0uioc';
+            const token = btoa(`${login}:${senha}`);
+
+            axios.post('https://sheetdb.io/api/v1/sua_api_url', linhaParaAdicionar, {
+                headers: {
+                    'Authorization': `Basic ${token}`
+                }
+            })
+            .then(function (response) {
+                console.log('Linha adicionada com sucesso:', response.data);
+                // Limpe os campos do formulário
+                document.getElementById("tipo-contribuicao").value = "";
+                document.getElementById("valor").value = "";
+                document.getElementById("data").value = "";
+                document.getElementById("nome-contribuinte").value = "";
+            })
+            .catch(function (error) {
+                console.error('Erro ao adicionar linha à planilha:', error);
+            });
+        }
+    });
 });
