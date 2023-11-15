@@ -42,6 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(function (error) {
                 console.error('Erro ao adicionar linha à planilha:', error);
             });
+            
+            const whatsappLink = `https://wa.me/?text=${encodeURIComponent(comprovante)}`;
+            window.open(whatsappLink, '_blank');
         }
     });
 });
