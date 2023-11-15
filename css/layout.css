@@ -13,6 +13,7 @@ form {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    align-items: center;
 }
 
 label {
@@ -22,14 +23,21 @@ label {
 
 input[type="text"],
 input[type="number"],
-input[type="date"],
+input[type="date"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 10px; /* Adicione esta linha para criar espaço à esquerda apenas nos inputs */
+}
+
 select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    margin-left: 0;
 }
 
 button {
