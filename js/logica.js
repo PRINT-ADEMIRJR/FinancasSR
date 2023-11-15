@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const enviarButton = document.getElementById("enviar-button");
 
     enviarButton.addEventListener("click", function () {
-        const tipoContribuicao = document.getElementById("TIPO CONTRIBUICAO").value;
-        const valor = document.getElementById("DATA").value;
-        const data = document.getElementById("NOME").value;
-        const nomeContribuinte = document.getElementById("VALOR").value;
+        const tipoContribuicao = document.getElementById("tipo-contribuicao").value;
+        const valor = document.getElementById("valor").value;
+        const data = document.getElementById("data").value;
+        const nomeContribuinte = document.getElementById("nome-contribuinte").value;
 
         const confirmacao = confirm("Por favor, confirme as informações:\n\n" +
             `TIPO CONTRIBUICAO: ${tipoContribuicao}\n` +
